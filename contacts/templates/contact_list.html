@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Contacts</h1>
+
+<a href="{% url "auth_login" %}">Login</a>
+<a href="{% url "registration_register" %}">register</a>
+	
+
+<table border="4">
+<colgroup width="250" span="2"></colgroup>
+{% for contact in object_list %} 
+<tr>
+<td>
+	<a href="{{ contact.get_absolute_url }}">{{ contact }}</a>
+</td>
+<td>
+(<a href="{% url "contacts-edit" pk=contact.id %}">edit</a>|{% if contact.id %}<a href="{% url "contacts-delete" pk=contact.id %}">delete</a>{% endif %}|{% if contact.id %}<a href="{% url "contacts-edit-addresses" pk=contact.id %}">edit Addresses</a>{% endif %})
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<table border="3" style="margin-top: 20px">
+ <colgroup width="249" span="2"></colgroup> 
+  <tr>
+    <td  valign="middle" align="center">
+	<a href="{% url "contacts-new" %}">add contact</a>
+    </td>
+  </tr>
+</table>
+
+{% endblock %}

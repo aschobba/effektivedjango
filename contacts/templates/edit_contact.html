@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+{% if contact.id %}
+<h1>Edit Contact</h1>
+{% else %}
+<h1>Add Contact</h1>
+{% endif %}
+
+<form action="{{ action }}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <ul>
+    {{ form.as_ul }}
+  </ul>
+  <input id="save_contact" type="submit" value="Save" />
+</form>
+
+<table border="3">
+ <colgroup width="250" span="3"></colgroup> 
+  <tr>
+    <td  valign="middle" align="center">
+      	{% if contact.id %}
+	<a href="{% url "contacts-edit-addresses" pk=contact.id %}">Edit Addresses</a>
+	{% endif %}
+    </td>
+    <td valign="middle" align="center">
+      	{% if contact.id %}
+	<a href="{% url "contacts-delete" pk=contact.id %}">Delete</a>
+	{% endif %}
+    </td>
+    <td valign="middle" align="center">
+      	<a href="{% url "contacts-list" %}">back to list</a>
+    </td>
+  </tr>
+</table>
+
+{% endblock %}
