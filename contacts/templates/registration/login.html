@@ -10,7 +10,7 @@
 <p class="error">Please correct the errors below:</p>
 {% endif %}
 
-<form method="post" action="?next={{ next|default:"/" }}">{% csrf_token %}
+<form method="post" action="?next={{ next|default:"/contacts-list" }}">{% csrf_token %}
 <dl>
 <dt><label for="id_username">Username:</label>{% if form.username.errors %} <span class="error">{{ form.username.errors|join:", " }}</span>{% endif %}</dt>
 <dd>{{ form.username }}</dd>
@@ -19,6 +19,10 @@
 <dt><input type="submit" value="Log in" /></dt>
 </dl>
 </form>
+
+<p>If you don't have an account, you can <a href="/accounts/register/">sign
+up</a> for one.
+
 {% endblock %}
 
 {% block content-related %}
