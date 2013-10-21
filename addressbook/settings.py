@@ -134,7 +134,7 @@ ACCOUNT_ACTIVATION_DAYS=7
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "aschobba@googlemail.com"
-EMAIL_HOST_PASSWORD = "frog-1991"
+EMAIL_HOST_PASSWORD = "***"
 EMAIL_USE_TLS = True
 
 # A sample logging configuration. The only tangible logging
