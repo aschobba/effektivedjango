@@ -5,7 +5,7 @@ import contacts.views
 
 
 urlpatterns = patterns('',
-    (r'^accounts/', include('registration.urls')),
+    (r'^accounts/', include('registration.backends.default.urls')),
     url(r'^$', auth_views.login,
     {'template_name': 'registration/login.html'},
     name='auth_login'),

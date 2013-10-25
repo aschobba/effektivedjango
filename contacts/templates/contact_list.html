@@ -3,6 +3,8 @@
 {% block content %}
 <h1>Contacts</h1>
 
+{% if user.is_authenticated %}
+
 <a href="{% url "auth_logout" %}">logout</a>
 
 <table border="4">
@@ -28,5 +30,8 @@
     </td>
   </tr>
 </table>
+{% else %}
+<p>Thanks for stopping by; when you come back, don't forget to <a href="/accounts/login/">log in</a> again.</p>   
+{% endif %}
 
 {% endblock %}
