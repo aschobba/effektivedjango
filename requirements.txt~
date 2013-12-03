@@ -1,6 +1,0 @@
-Django==1.5.1
-argparse==1.2.1
-django-registration==1.0
-rebar==0.1
-selenium==2.35.0
-wsgiref==0.1.2
