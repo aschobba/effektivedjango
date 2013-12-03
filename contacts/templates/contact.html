@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ contact }}</h1>
+
+<table>
+<colgroup>
+     <col width="500" />
+     <col width="250" />
+   </colgroup>
+<td>
+<table border="2">
+   <colgroup>
+     <col width="250" />
+     <col width="250" />
+   </colgroup>
+  <tr>
+    <td><p><b>Name:</b></p></td>
+    <td><p>{{ contact }}</p></td>
+  </tr>
+  <tr>
+    <td><p><b>Birthday:</b></p></td>
+    <td><p>{{ contact.birthday }}</p></td>
+  </tr>
+  <tr>
+    <td><p><b>Email:</b></p></td>
+    <td><p>{{ contact.email }}</p></td>
+  </tr>
+  <tr>
+    <td><p><b>Phone:</b></p></td>
+    <td><p>{{ contact.phone }}</p></td>
+  </tr>	
+  <tr>
+    <td align="left" valign="top"><p><b>Addresses:</b></p></td>
+    <td>{% for address in contact.address_set.all %}
+	<p><b><u>{{ address.address_type }}</u></b></p>
+	<p><b>Street:</b> {{ address.street }}</p>
+	<p><b>City:</b> {{ address.city }}</p>
+	<p><b>Postal Code:</b> {{ address.postal_code }}</p>
+	{% endfor %}</td>
+  </tr>
+
+</table>
+</td>
+<td valign="top">
+{% if contact.picture %}
+	<p><img src="/static/picture/{{contact.picture}}" width="250"/></p>
+	{% endif %}
+</td>
+</table>
+
+
+<table border="3">
+ <colgroup width="249" span="3"></colgroup> 
+  <tr>
+    <td  valign="middle" align="center">
+      	{% if contact.id %}
+	<a href="{% url "contacts-edit-addresses" pk=contact.id %}">Edit Addresses</a>
+	{% endif %}
+    </td>
+    <td valign="middle" align="center">
+      	{% if contact.id %}
+	<a href="{% url "contacts-delete" pk=contact.id %}">Delete</a>
+	{% endif %}
+    </td>
+    <td valign="middle" align="center">
+      	<a href="{% url "contacts-list" %}">back to list</a>
+    </td>
+  </tr>
+</table>
+
+
+{% endblock %}
