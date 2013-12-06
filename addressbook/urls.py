@@ -2,9 +2,13 @@ from django.conf.urls import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth import views as auth_views
 import contacts.views
+from tastypie.api import Api
 
-from .api import ContactResource
-contact_resource = ContactResource()
+from .api import ContactResource, UserResource
+#contact_resource = ContactResource()
+v1_api = Api(api_name='v1')
+v1_api.register(UserResource())
+v1_api.register(ContactResource())
 
 urlpatterns = patterns('',
     (r'^accounts/', include('registration.backends.default.urls')),
@@ -23,7 +27,8 @@ urlpatterns = patterns('',
         name='contacts-edit-addresses',),
     url(r'^delete/(?P<pk>\d+)/$', contacts.views.DeleteContactView.as_view(),
         name='contacts-delete',),
-    url(r'^api/', include(contact_resource.urls)),
+    #url(r'^api/', include(contact_resource.urls)),
+    url(r'^api/', include(v1_api.urls)),
 )
 
 urlpatterns += staticfiles_urlpatterns()
