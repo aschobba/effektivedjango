@@ -1,0 +1,6 @@
+HTTP/1.0 405 METHOD NOT ALLOWED
+Date: Mon, 06 Jan 2014 09:09:24 GMT
+Server: WSGIServer/0.1 Python/2.7.5+
+Content-Type: text/html; charset=utf-8
+Allow: GET
+

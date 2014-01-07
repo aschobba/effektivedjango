@@ -9,6 +9,7 @@ class UserResource(ModelResource):
         queryset = User.objects.all()
         resource_name = 'user'
 	allowed_methods = ['get']	
+	authorization = Authorization()
 
 class RecipeResource(ModelResource):
     conatct = fields.ForeignKey(UserResource, 'Contact')
