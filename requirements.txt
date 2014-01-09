@@ -5,4 +5,5 @@ rebar==0.1
 selenium==2.35.0
 wsgiref==0.1.2
 django-tastypie==0.10.0
-mimeparse
+django-simple-captcha==0.4.1
+mimeparse==0.1.3

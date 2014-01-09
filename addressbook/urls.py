@@ -29,6 +29,7 @@ urlpatterns = patterns('',
         name='contacts-delete',),
     #url(r'^api/', include(contact_resource.urls)),
     url(r'^api/', include(v1_api.urls)),
+    url(r'^captcha/', include('captcha.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()
